@@ -2,11 +2,14 @@
 	https://leetcode.com/problems/construct-target-array-with-multiple-sums/
 */
 
+#include <cstdlib>
 #include <iostream>
 
 #include <numeric>
 #include <vector>
 #include <queue>
+
+#include "utils.h"
 
 
 class Solution{
@@ -53,22 +56,13 @@ class Solution{
 				sum += top;
 			}
 
+
 			return true;
 		}
 };
 
 
-void print(const std::vector<int> &vec){
-	if(vec.size() == 0){ std::cout << "[]"; return; }
-
-	std::cout << "[";
-	for(unsigned int i = 0; i < vec.size() - 1; ++i) std::cout << vec[i] << ", ";
-	std::cout << vec[vec.size() - 1];
-	std::cout << "]";
-}
-
-
-int main(/*int argc, char** argv*/){
+int main(){
 	Solution soln;
 	std::vector<std::vector<int>> testCases;
 
@@ -144,8 +138,9 @@ int main(/*int argc, char** argv*/){
 	244590748, 760631243, 724186625, 245285661, 857735089, 615216440, 999580390, 569025273, 381834308, 646664138, 48634867, 985761589, 949860007});
 	testCases.push_back({1, 1, 10});
 
-	for(const std::vector<int> &test : testCases){
-		print(test);
-		std::cout << " ==> " << soln.isPossible(test) << std::endl;
-	}
+	for(const std::vector<int> &test : testCases)
+		std::cout << Utils::print<int>(test) << " ==> " << soln.isPossible(test) << std::endl;
+
+
+	return EXIT_SUCCESS;
 }
